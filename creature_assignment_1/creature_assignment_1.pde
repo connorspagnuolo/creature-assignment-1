@@ -1,31 +1,39 @@
- int numtiny = 1;
-  
-  tiny[] tinys = new tiny[numtiny] ; 
-  
+int numpep = 10 ;
+int player = 1;
+
+Tiny[] tinys = new Tiny[player];
+ pedestrians[] people = new pedestrians[numpep]; 
   PImage green;
+ 
   void setup(){
     size(800,600,P2D);
       frameRate(60);
   green = loadImage("grass.jpg");
   
-  
+    for (int i=0; i<tinys.length; i++) {
+    tinys[i] = new Tiny(random(width), random(height));
+  }
+
+ for (int i=0; i<people.length; i++) {
+    people[i] = new pedestrians(random(width), random(height));
+   }
   }
   
-  }
+
   
   void draw() {
-    image(green,0 , 0, width, height);
-   fill(175);
-    rect(100, 0, 600, 600);
+   // image(green,0 , 0, width, height);
+  background(0, 0, 255);
     
- line(100, 50, 700, 50);
-  line(100, 150, 700, 150);
-   line(100, 250, 700, 250);
-   line(100, 350, 700, 350);
-   line(100, 450,700, 450);
-   line(100, 550, 700, 550);
-   
    
   
-   
+ 
+ 
+for (int i=0; i<people.length; i++) {
+    people[i].run();
+  } 
+    for (int i=0; i<tinys.length; i++) {
+    tinys[i].run();
+    }
+  
   }

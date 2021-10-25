@@ -1,31 +1,42 @@
-class tiny {
-  PImage pict;
-   PVector position, target;
+class Tiny {
+ PVector position;
+float eat = 40;
+  boolean alive = true;
   
-  tiny(float x, float y) {
-    position = new PVector(x, y);
+  Tiny(float x, float y) {
+   
+  
+  }
+
+  void update() {
+
+    }
+
+    
+    
+
+  void draw() {
+    ellipseMode(CENTER);
+     imageMode(CENTER);
+      noStroke();
+   fill(127);
+  ellipse(mouseX, mouseY, 40, 40);
  
-
-
-  }
- void setup(){ 
-   pict = loadImage("person.png");
-  
-  }
-
-
-
-
-void Draw() {
-
-
-  
-  if(mousepreesed) {
- image(pict, 400, 500, width, height); 
-  }
+    
   
   
-
-}
-
+  
+ 
+    
+  
+ 
+ 
+ 
+    } 
+    
+    void run() {
+    update();
+    draw();
+  } 
+  
 }
