@@ -1,6 +1,7 @@
 class Tiny {
   PImage pic;
-  
+  float rota = 1;
+  float rotb = 2;
   
  PVector position;
 float eat = 40;
@@ -12,30 +13,27 @@ float eat = 40;
   }
 
   void update() {
-
+ rota += rotb;    
+    if (rota < -90 || rota > 90) rotb *= -1;  
     }
 
     
     
 
   void draw() {
-    ellipseMode(CENTER);
-     imageMode(CENTER);
-      noStroke();
-   fill(0, 0, 255);
+  noStroke();
+      if (mousePressed){  
+   pushMatrix(); 
+      translate(mouseX,mouseY);
+    rotate(radians(rota));
   image(pic,mouseX, mouseY, 80, 80);
- 
-    
-  
-  
-  
- 
-    
-  
- 
- 
- 
-    } 
+  imageMode(CENTER);
+ popMatrix();
+      } else {
+          image(pic,mouseX, mouseY, 80, 80);
+  imageMode(CENTER);
+      }
+     } 
     
     void run() {
     update();
