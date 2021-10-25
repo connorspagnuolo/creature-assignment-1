@@ -1,54 +1,40 @@
-class pedestrians {
-  int fish = 6;
-  ArrayList<PVector> positions = new ArrayList<PVector>();
-  int tim ;
-  int timewait = 5000;
-  int delet = 15000;
-  boolean alive = true;
-  int lifetime = 10000;
+class pedestrian {
+
+  PImage im;
+PVector position, target;
+boolean isRunning = false;
+
+pedestrian( float x, float y) { 
+  size(800, 600, P2D);
   
- pedestrians(float x,float y){ 
+  position = new PVector(width/2, height/2);
+  target = new PVector(random(width), random(height));  
   
-   for (int i=0; i<fish; i++) {
-    positions.add(new PVector(random(width), random(height)));
-   }
-  }
+  ellipseMode(CENTER);
+  im = loadImage("fish.jpg");
+}
+
+void draw() {
+
   
-  void update() {
- // PVecter mousep = (mouseX,mouseY);
-    
-    
-  }
-  void draw(){
-    background(55, 20, 254);
-    if(alive){
-    if (millis() > tim + timewait) {
-    positions.add(new PVector(random(width), random(height)));
-    
-    tim=millis();
-    }
-    for (int i=0; i<positions.size(); i++) {
-      fill(150, 50, 8);
-      ellipse(positions.get(i).x, positions.get(i).y, 10, 10);
-    }
-    
-    if (millis() > tim + delet){
-       if (positions.size() > 0) {
-      positions.remove(positions.size()-1);
-    }
-     tim = millis();
+  PVector mousePos = new PVector(mouseX, mouseY);
+  isRunning = position.dist(mousePos) < 100;
+  
+  if (isRunning) {
+    position = position.lerp(target, 0.08);
+    if (position.dist(target) < 5) {
+      target = new PVector(random(width), random(height));
     }
   }
-  }
+  
+  image(im,position.x, position.y, 60, 60);
+}
+
+void run() {
   
   
-  
-  
-   void run() {
-    update();
-    draw();
-  }
-  
-  
-  
+  draw();
+}
+
+
 }

@@ -1,8 +1,8 @@
-int numpep = 10 ;
+int numpep = 15 ;
 int player = 1;
 
 Tiny[] tinys = new Tiny[player];
- pedestrians[] people = new pedestrians[numpep]; 
+ pedestrian[] people = new pedestrian[numpep]; 
   PImage green;
  
   void setup(){
@@ -15,14 +15,14 @@ Tiny[] tinys = new Tiny[player];
   }
 
  for (int i=0; i<people.length; i++) {
-    people[i] = new pedestrians(random(width), random(height));
+    people[i] = new pedestrian(random(width), random(height));
    }
   }
   
 
   
   void draw() {
-   // image(green,0 , 0, width, height);
+ 
   background(0, 0, 255);
     
    

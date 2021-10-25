@@ -1,10 +1,13 @@
 class Tiny {
+  PImage pic;
+  
+  
  PVector position;
 float eat = 40;
   boolean alive = true;
   
   Tiny(float x, float y) {
-   
+   pic = loadImage("shark.jpg");
   
   }
 
@@ -19,8 +22,8 @@ float eat = 40;
     ellipseMode(CENTER);
      imageMode(CENTER);
       noStroke();
-   fill(127);
-  ellipse(mouseX, mouseY, 40, 40);
+   fill(0, 0, 255);
+  image(pic,mouseX, mouseY, 80, 80);
  
     
   
